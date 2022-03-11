@@ -10,42 +10,42 @@ public class DollarTest {
     //Testing for Dollar -- start
     @Test
     void testMultiplicationDollar() {
-        Dollar dollar = new Dollar(5);
-        Dollar product = dollar.times(2);
-        assertEquals(new Dollar(10), product);
-
-        product = dollar.times(3);
-        assertEquals(new Dollar(15), product);
+        assertEquals(Money.getDollar(10), Money.getDollar(5).times(2));
+        assertEquals(Money.getDollar(15), Money.getDollar(5).times(3));
     }
 
     @Test
     void testEqualitiesDollar() {
-        assertEquals(new Dollar(5), new Dollar(5));
-        assertNotEquals(new Dollar(5), new Dollar(8));
+        assertEquals(Money.getDollar(5), Money.getDollar(5));
+        assertNotEquals(Money.getDollar(5), Money.getDollar(8));
     }
     //Testing for Dollar -- end
 
     //Testing for Franc -- start
     @Test
     void testMultiplicationFranc() {
-        Franc franc = new Franc(5);
-        Franc product = franc.times(2);
-        assertEquals(new Franc(10), product);
-
-        product = franc.times(3);
-        assertEquals(new Franc(15), product);
+        assertEquals(Money.getFranc(10), Money.getFranc(5).times(2));
+        assertEquals(Money.getFranc(15), Money.getFranc(5).times(3));
     }
 
     @Test
     void testEqualitiesFranc() {
-        assertEquals(new Franc(5), new Franc(5));
-        assertNotEquals(new Franc(5), new Franc(8));
+        assertEquals(Money.getFranc(5), Money.getFranc(5));
+        assertNotEquals(Money.getFranc(5), Money.getFranc(8));
     }
     //Testing for Franc -- end
 
     //Common across
     @Test
     void compareMoney() {
-        assertEquals(new Dollar(5), new Franc(5));
+        // We are comparing Dollar against Franc. So it should not be equals
+        assertNotEquals(Money.getDollar(5), Money.getFranc(5));
+    }
+
+    @Test
+    void testCurrency() {
+        // We are comparing Dollar against Franc. So it should not be equals
+        assertEquals("USD", Money.getDollar(1).getCurrency());
+        assertEquals("CHG", Money.getFranc(1).getCurrency());
     }
 }
