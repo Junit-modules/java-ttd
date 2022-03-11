@@ -4,11 +4,11 @@ import java.util.Objects;
 
 public class Dollar extends Money{
 
-    public Dollar(int amount) {
-        this.amount = amount;
+    public Dollar(int amount, String currency) {
+        super(amount, currency);
     }
 
-    public Dollar times(int times) {
-        return new Dollar(this.amount * times);
+    public Money times(int times) {
+        return Money.getDollar(this.amount * times);
     }
 }
