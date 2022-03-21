@@ -2,7 +2,7 @@ package com.dev.tdd.corejava;
 
 import java.util.Objects;
 
-public abstract class Money {
+public class Money {
 
     protected int amount;
 
@@ -13,14 +13,16 @@ public abstract class Money {
         this.currency = currency;
     }
 
-    public abstract Money times(int times) ;
+    public Money times(int times) {
+        return new Money(this.amount * times, this.currency);
+    }
 
     public static Money getDollar(int amount){
-        return new Dollar(amount, "USD");
+        return new Money(amount, "USD");
     }
 
     public static Money getFranc(int amount){
-        return new Franc(amount, "CHG");
+        return new Money(amount, "CHG");
     }
 
     public String getCurrency() {
@@ -33,11 +35,20 @@ public abstract class Money {
         //it will fail when we compare Dollar and Franc, since it is using getClass()
         if (o == null || getClass() != o.getClass()) return false;
         Money money = (Money) o;
-        return amount == money.amount;
+        return this.amount == money.amount && this.currency.equals(money.currency);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(amount);
     }
+
+    @Override
+    public String toString() {
+        return "Money{" +
+                "amount=" + amount +
+                ", currency='" + currency + '\'' +
+                '}';
+    }
+
 }
