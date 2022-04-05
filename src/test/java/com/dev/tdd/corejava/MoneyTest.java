@@ -43,6 +43,10 @@ public class MoneyTest {
         assertEquals("CHG", Money.getFranc(1).getCurrency());
     }
 
+    /**
+     * @since 2022
+     */
+
     @Test
     void testExpression() {
         // We are comparing Dollar against Franc. So it should not be equals
