@@ -4,9 +4,9 @@ import java.util.Objects;
 
 public class Money implements Expression{
 
-    protected int amount;
+    protected final int amount;
 
-    protected String currency;
+    protected final String currency;
 
     public Money(int amount, String currency) {
         this.amount = amount;

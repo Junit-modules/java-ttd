@@ -2,8 +2,8 @@ package com.dev.tdd.corejava;
 
 public class Sum implements Expression{
 
-    Money augmend;
-    Money addmend;
+    final Money augmend;
+    final Money addmend;
 
     public Sum(Money augmend, Money addmend) {
         this.augmend = augmend;
